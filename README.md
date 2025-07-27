@@ -33,5 +33,5 @@ A modern task management application built to help you organize and track your d
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/yourusername/task-management.git
+git clone https://github.com/bilalup/Task-Managment
 ```
