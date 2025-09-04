@@ -10,3 +10,5 @@ const generateTokenAndSetCookie = (res, userId) => {
     maxAge: 24 * 60 * 60 * 1000     // 1 day
   });
 };
+
+export default generateTokenAndSetCookie;
