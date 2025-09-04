@@ -20,7 +20,7 @@ const Dashboard = () => {
         const { data } = await axios.get(`${serverApi}/api/tasks/all-tasks`, {
           withCredentials: true,
         });
-        setTasks(data);
+        setTasks(data.tasks);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching tasks:', error);
