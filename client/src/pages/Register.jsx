@@ -2,23 +2,17 @@ import { useState } from 'react';
 // eslint-disable-next-line
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { register } = useAuth();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await register(username, email, password);
-      navigate('/');
-    } catch (error) {
-      console.error('Registration failed:', error);
-    }
+    await register(username, email, password);
   };
 
   return (

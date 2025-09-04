@@ -1,18 +1,16 @@
-import { useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const PrivateRoute = ({ children }) => {
-  const { token } = useAuth();
-  const navigate = useNavigate();
+  const { user, loading } = useAuth();
 
-  useEffect(() => {
-    if (!token) {
-      navigate('/login');
-    }
-  }, [token, navigate]);
+  if (loading) return <div>Loading...</div>;
 
-  return token ? children : null;
+  // If user is not authenticated → redirect to login
+  if (!user) return <Navigate to="/login" replace />;
+
+  // If user is authenticated → render the children
+  return children;
 };
 
 export default PrivateRoute;

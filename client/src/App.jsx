@@ -5,8 +5,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
+import PublicRoute from './components/PublicRoute'
 
 function App() {
+  document.title = 'Task Manager';
   return (
     <Router>
       <AuthProvider>
@@ -14,8 +16,8 @@ function App() {
           <Navbar />
           <div className="container mx-auto px-4 py-8">
             <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<PublicRoute><Login /> </PublicRoute>} />
+              <Route path="/register" element={<PublicRoute><Register /> </PublicRoute>} />
               <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
             </Routes>
           </div>

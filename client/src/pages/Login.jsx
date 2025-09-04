@@ -2,23 +2,17 @@ import { useState } from 'react';
 // eslint-disable-next-line
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await login(email, password);
-      navigate('/');
-    } catch (error) {
-      console.error('Login failed:', error);
-    }
-  };
+  e.preventDefault();
+  await login(email, password);
+};
 
   return (
     <motion.div

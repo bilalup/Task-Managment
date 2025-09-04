@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
-  const { token, logout } = useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <motion.nav 
@@ -14,7 +14,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold text-indigo-600">Task Manager</h1>
-        {token && (
+        {user && (
           <button
             onClick={logout}
             className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"

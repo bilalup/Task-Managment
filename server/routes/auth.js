@@ -1,40 +1,18 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User.js');
-const bcrypt = require('bcryptjs');
+import express from 'express';
+import verifyToken from '../middleware/verifyToken.js';
+import { CheckAuth, Login, Logout, Register } from '../controllers/auth.controller.js';
 
 const router = express.Router();
 
 // Register
-router.post('/register', async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-    const user = new User({ username, email, password });
+router.post('/register', Register);
 
-    const userAlreadyExists = await User.findOne({ email });
-    if (userAlreadyExists) return res.status(400).json({ message: 'User already exists' });
-    await user.save();
-    
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.status(201).json({ user, token });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+// Login
+router.post('/login', Login);
 
-router.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: 'User not found' });
-    }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.status(200).json({ user, token });
-  } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ message: error.message });
-  }
-});
+router.post('/logout', Logout);
 
-module.exports = router;
+
+router.get('/check-auth', verifyToken, CheckAuth);
+
+export default router;
