@@ -5,10 +5,11 @@ const generateTokenAndSetCookie = (res, userId) => {
 
   res.cookie('token', token, {
     httpOnly: true,
-    sameSite: 'lax',                // or 'none' if cross-site
-    secure: process.env.NODE_ENV === 'production', // only true in production
-    maxAge: 24 * 60 * 60 * 1000     // 1 day
+    secure: true,       // Render uses HTTPS
+    sameSite: 'none',   // required for cross-site cookies
+    maxAge: 24 * 60 * 60 * 1000
   });
 };
+
 
 export default generateTokenAndSetCookie;
