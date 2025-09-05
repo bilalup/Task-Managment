@@ -4,8 +4,7 @@ A modern, intuitive task management application designed to help you organize, p
 
 ## Live Demo
 
-_(Include link once deployed)_  
-Example: [Live Demo](https://task-managment.bilalsi.com/)
+[Live Demo](https://task-managment.bilalsi.com/)
 
 ## Features
 
