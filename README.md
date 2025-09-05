@@ -1,37 +1,49 @@
-# Task Management App 📋
+# Task Management App
 
-![Task Management App](https://img.shields.io/badge/status-active-success.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+A modern, intuitive task management application designed to help you organize, prioritize, and track daily tasks effortlessly—whether you're on desktop or mobile.
 
-A modern task management application built to help you organize and track your daily tasks efficiently.
+## Live Demo
 
-## Features ✨
+_(Include link once deployed)_  
+Example: [Live Demo](https://task-managment.bilalsi.com/)
 
-- Create, update, and delete tasks
-- Mark tasks as complete/incomplete
-- Priority levels (High/Medium/Low)
-- Due date reminders
-- Task categories/labels
-- Search and filter functionality
-- Responsive design (works on mobile & desktop)
+## Features
 
-## Tech Stack 🛠️
+- Add, update, and delete tasks
+- Mark tasks as **complete** or **incomplete**
+- Assign priority: **High**, **Medium**, **Low**
+- Set due date reminders
+- Organize via categories or labels
+- Search and filter tasks (by status, priority, due date)
+- Fully **responsive design**
 
-**Frontend:**  
-![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css)
+## Tech Stack
 
-**Backend:**  
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js)
-![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express)
+| Layer    | Technology          |
+| -------- | ------------------- |
+| Frontend | React, Tailwind CSS |
+| Backend  | Node.js, Express    |
+| Database | MongoDB             |
 
-**Database:**  
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb)
+## Getting Started
 
-## Installation ⚙️
+### Prerequisites
 
-1. Clone the repo:
+- Node.js (v16+)
+- MongoDB (local or Atlas)
+
+### Installation & Setup
 
 ```bash
-git clone https://github.com/bilalup/Task-Managment
+# Clone the repo
+git clone https://github.com/bilalup/Task-Managment.git
+cd Task-Managment
+
+# Install dependencies
+cd server && npm install
+cd ../client && npm install
+
+# Run both client and server (in separate terminals):
+cd server && npm run dev     # starts backend on default port (e.g., 5000)
+cd client && npm start       # starts React app (e.g., port 3000)
 ```
