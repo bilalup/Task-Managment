@@ -15,27 +15,26 @@ const Dashboard = () => {
   const serverApi = import.meta.env.VITE_SERVER_API;
 
   useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const { data } = await axios.get(`${serverApi}/api/tasks/all-tasks`, {
-          withCredentials: true,
-        });
-        setTasks(data.tasks);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching tasks:', error);
-        setLoading(false);
+  const fetchTasks = async () => {
+    try {
+      const { data } = await axios.get(`${serverApi}/api/tasks/all-tasks`, {
+        withCredentials: true,
+      });
+      setTasks(data || []); // ✅ use data directly, with fallback
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+      setLoading(false);
 
-        // Redirect to login if unauthorized
-        if (error.response?.status === 401) {
-          navigate('/login');
-        }
+      if (error.response?.status === 401) {
+        navigate('/login');
       }
-    };
+    }
+  };
 
-    fetchTasks();
-    // eslint-disable-next-line
-  }, [navigate]);
+  fetchTasks();
+}, [navigate]);
+
   
   // ... rest of your code unchanged
   const addTask = async (task) => {
