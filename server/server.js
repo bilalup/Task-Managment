@@ -29,7 +29,13 @@ mongoose.connect(process.env.MONGODB_URI)
   });
 
 // Health check
-app.get('/', (req, res) => res.send('Hello from server! it is working!'));
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Your API is running',
+    timestamp: new Date().toISOString()
+  });
+});
 
 // Routes
 app.use('/api/auth', authRoutes);
